@@ -1,0 +1,11 @@
+AUTOMAKE_OPTIONS=foreign
+#软件规范 
+bin_PROGRAMS=loongfly 
+#可执行文件名称 
+loongfly_SOURCES=test.c 
+#可执行需要的源文件 
+#loongfly_LDADD=$(top_builddir)/external/iniparser/libiniparser.a 
+loongfly_LDADD=$(top_builddir)/src/libloongify.a 
+#可执行文件需要的动态库文件 
+#AM_CPPFLAGS=-I$(top_srcdir)/external/iniparser
+AM_CPPFLAGS=-I$(top_srcdir)/include

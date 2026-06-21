@@ -1,0 +1,7 @@
+dj.o: ../../src/dj.c /usr/include/stdc-predef.h \
+ ../../include/loongify/dj.h ../../include/loongify/ju.h \
+ ../../include/loongify/jq.h
+/usr/include/stdc-predef.h:
+../../include/loongify/dj.h:
+../../include/loongify/ju.h:
+../../include/loongify/jq.h:

@@ -1,0 +1,4 @@
+ju.o: ../../src/ju.c /usr/include/stdc-predef.h \
+ ../../include/loongify/ju.h
+/usr/include/stdc-predef.h:
+../../include/loongify/ju.h:
