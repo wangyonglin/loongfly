@@ -1,7 +1,7 @@
 dj.o: ../../src/dj.c /usr/include/stdc-predef.h \
- ../../include/loongify/dj.h ../../include/loongify/ju.h \
- ../../include/loongify/jq.h
+ ../../include/loongify/dj.h ../../include/loongify/lib.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h
 /usr/include/stdc-predef.h:
 ../../include/loongify/dj.h:
-../../include/loongify/ju.h:
-../../include/loongify/jq.h:
+../../include/loongify/lib.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h:

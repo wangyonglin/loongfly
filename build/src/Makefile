@@ -105,8 +105,7 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libloongify_a_AR = $(AR) $(ARFLAGS)
 libloongify_a_LIBADD =
-am_libloongify_a_OBJECTS = gz.$(OBJEXT) ju.$(OBJEXT) jq.$(OBJEXT) \
-	dj.$(OBJEXT) xs.$(OBJEXT) ft.$(OBJEXT)
+am_libloongify_a_OBJECTS = stdlib.$(OBJEXT) jq.$(OBJEXT)
 libloongify_a_OBJECTS = $(am_libloongify_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -123,9 +122,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/dj.Po ./$(DEPDIR)/ft.Po \
-	./$(DEPDIR)/gz.Po ./$(DEPDIR)/jq.Po ./$(DEPDIR)/ju.Po \
-	./$(DEPDIR)/xs.Po
+am__depfiles_remade = ./$(DEPDIR)/jq.Po ./$(DEPDIR)/stdlib.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -193,7 +190,7 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
 LIBOBJS = 
-LIBS = 
+LIBS = -lm 
 LTLIBOBJS = 
 MAKEINFO = ${SHELL} '/home/wangyonglin/github/loongfly/missing' makeinfo
 MKDIR_P = /usr/bin/mkdir -p
@@ -257,7 +254,8 @@ top_srcdir = ../..
 AUTOMAKE_OPTIONS = foreign
 AM_CPPFLAGS = -I$(top_srcdir)/include
 noinst_LIBRARIES = libloongify.a 
-libloongify_a_SOURCES = gz.c ju.c jq.c dj.c xs.c ft.c
+libloongify_a_SOURCES = stdlib.c jq.c
+libloongify_a__LDADD = -lm 
 all: all-am
 
 .SUFFIXES:
@@ -306,12 +304,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/dj.Po # am--include-marker
-include ./$(DEPDIR)/ft.Po # am--include-marker
-include ./$(DEPDIR)/gz.Po # am--include-marker
 include ./$(DEPDIR)/jq.Po # am--include-marker
-include ./$(DEPDIR)/ju.Po # am--include-marker
-include ./$(DEPDIR)/xs.Po # am--include-marker
+include ./$(DEPDIR)/stdlib.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -456,12 +450,8 @@ clean: clean-am
 clean-am: clean-generic clean-noinstLIBRARIES mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/dj.Po
-	-rm -f ./$(DEPDIR)/ft.Po
-	-rm -f ./$(DEPDIR)/gz.Po
-	-rm -f ./$(DEPDIR)/jq.Po
-	-rm -f ./$(DEPDIR)/ju.Po
-	-rm -f ./$(DEPDIR)/xs.Po
+		-rm -f ./$(DEPDIR)/jq.Po
+	-rm -f ./$(DEPDIR)/stdlib.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -507,12 +497,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/dj.Po
-	-rm -f ./$(DEPDIR)/ft.Po
-	-rm -f ./$(DEPDIR)/gz.Po
-	-rm -f ./$(DEPDIR)/jq.Po
-	-rm -f ./$(DEPDIR)/ju.Po
-	-rm -f ./$(DEPDIR)/xs.Po
+		-rm -f ./$(DEPDIR)/jq.Po
+	-rm -f ./$(DEPDIR)/stdlib.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

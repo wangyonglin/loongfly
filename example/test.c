@@ -1,34 +1,38 @@
 #include <stdio.h>
-#include <loongify/loongify.h>
-
+#include <loong/stdlib.h>
+#include <loong/jq.h>
 int main()
 {
-    loongify_gz_t gz;
-    // loongify_s_gz("丙", "寅", &gz);
-    // loongify_s_gz("丁", "丑", &gz);
-    // loongify_s_gz("乙", "丑", &gz);
-    loongify_s_gz("辛", "酉", &gz);
-    //  loongify_gz(TG_JI, DZ_MAO, &gz);
-    // printf("干支索引：天干=%d, 地支=%d\n", gz.tg, gz.dz);
-    
+    loong_gz4_t gz4=loong_gz4_make();
+    loong_cf_t cf;
+    loong_gz4_init(gz4,&cf);
+    loong_jieqi_time_t t;
 
-    // loongify_gz_s_t gz_s;
-    // loongify_gz_s(gz, &gz_s);
-    // printf("干支->%s%s\n", gz_s.tg_s, gz_s.dz_s);
 
-    loongify_gz_p(gz);
+    // 打印2026年所有节气
+    const char *names[] = {
+        "小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨",
+        "立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑",
+        "白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"
+    };
+    printf("\n2026年二十四节气（北京时间）：\n");
+    for (int jq = 0; jq < JQ_COUNT; jq++) {
+        if (loong_jieqi_time(2026, jq, &t)) {
+            printf("%-6s %02d-%02d %02d:%02d\n",
+                   names[jq], t.month, t.day, t.hour, t.minute);
+        }
+    }
+    // loong_jieqi_time_t t;
+    // if (loong_jieqi_time(2026, JQ_XIA_ZHI, &t)) {
+    //     printf("2026年夏至：%04d-%02d-%02d %02d:%02d\n",
+    //            t.year, t.month, t.day, t.hour, t.minute);
+    // }
 
-    loongify_xs_t xs;
-    loongify_xs(gz, &xs);
-    loongify_fs_t fs;
-    loongify_fs(xs, &fs);
-    printf("旬首-> %s%s      符首-> %s\n",tg_list[xs.tg] ,dz_list[xs.dz],tg_list[fs]);
-
-    loongify_ft_t ft;
-    loongify_ft(gz, &ft);
-    loongify_ft_sy_t sy;
-    loongify_ft_sy(ft, &sy);
-    printf("符头-> %s%s     三元-> %d\n", tg_list[ft.tg], dz_list[ft.dz],sy);
-   
+        // 已知 2000-01-01 12:00:00 UTC 的儒略日为 2451545.0
+    // double test_jd = 2451545.0;  // UTC
+    // loong_jieqi_time_t t;
+    // jd_to_datetime(test_jd, &t);  // 需要将 jd_to_datetime 暴露或复制到测试处
+    // printf("测试转换: %04d-%02d-%02d %02d:%02d\n", t.year, t.month, t.day, t.hour, t.minute);
+    // // 预期输出: 2000-01-01 20:00 (北京时间)
     return 0;
 }

@@ -1,4 +1,4 @@
-xs.o: ../../src/xs.c /usr/include/stdc-predef.h \
+lib.o: ../../src/lib.c /usr/include/stdc-predef.h \
  ../../include/loongify/xs.h ../../include/loongify/gz.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  ../../include/loongify/lib.h \
